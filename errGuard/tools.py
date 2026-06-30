@@ -63,7 +63,7 @@ def get_last_traceback_info(e: Union[Exception, TracebackType]) -> str:
 @dataclass
 class ErrorInfo:
 
-    code: str            # 错误编码
+    code: int            # 错误编码
     msg: str             # 错误信息
     traceback: list      # 调用栈（字符串格式）
     timestamp: str = field(default_factory=lambda: datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
@@ -72,7 +72,7 @@ class ErrorInfo:
 def error_handler(e: Exception, error_response: Optional[list] = None, error_inject_list: Optional[list] = None):
     """处理异常并返回错误响应"""
     error_item = ErrorInfo(
-        code="",
+        code=int(getattr(e, 'code', 599)),
         msg=str(e),
         traceback=[get_last_traceback_info(e)]
     )
