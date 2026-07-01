@@ -1,7 +1,7 @@
 import sys
 sys.path.append('..') # Add the parent directory to the system path
-from errGuard.errDecorator import error_factory
-from errGuard.tools import traceback_info, ErrorInfo, get_last_traceback_info
+from pyadorn.errDecorator import error_factory
+from pyadorn.tools import traceback_info, ErrorInfo, get_last_traceback_info
 import sys
 import traceback
 from loguru import logger
